@@ -1,8 +1,7 @@
 param (
-    [string]$token = "",
-    [string]$milestone = ""  
-	[string]$milestonedesc = ""  
-	
+	[string]$token = "",
+	[string]$milestone = "" , 
+	[string]$milestonedesc = ""  	
  )
  
 cd SQRLDotNetClientUI
