@@ -20,5 +20,5 @@ jobs:
       run: dotnet build --configuration Release
     - name: Create Releases Assets
       run: |
-           powershell .github/releases.ps1 -token ${{secrets.TOKEN}} -milestone ${{ github.event.milestone.title }}
+           powershell .github/releases.ps1 -token ${{secrets.TOKEN}} -milestone ${{ github.event.milestone.title }} -milestonedesc ${{ github.event.milestone.description }}
     
