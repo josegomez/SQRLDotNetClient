@@ -20,14 +20,5 @@ jobs:
       run: dotnet build --configuration Release
     - name: Create Releases Assets
       run: |
-           powershell .github/releases.ps1
-    - name: Create Release
-      uses: ecampidoglio/auto-release-milestone@v1
-      with:
-        repo-token: ${{secrets.TOKEN}} 
-    - name: Upload Assets
-      uses: AButler/upload-release-assets@v2.0
-      with:
-        files: 'C:/Temp/SQRL/Publish/*'
-        repo-token: ${{secrets.TOKEN}}
-        release-tag: ${{ github.event.milestone.title }}
+           powershell .github/releases.ps1 -token ${{secrets.TOKEN}} -milestone ${{ github.event.milestone.title }}
+    
