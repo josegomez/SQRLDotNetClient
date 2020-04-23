@@ -67,9 +67,9 @@ Foreach-Object {
         "Content-Type"= $contentType
     }
     $fileName = $_.Name
-    echo $fileName
+    echo "Uploading File: $fileName"
     $uploadUrl = $jsonObject.upload_url.replace("{?name,label}","")
     $fileUrl = $uploadUrl+"?name="+$fileName
-    Invoke-RestMethod -Uri $fileUrl -Method Post -Headers $fileHeaders -InFile $_.FullName -ContentType $contentType
-    
+    Invoke-RestMethod -Uri $fileUrl -Method Post -Headers $fileHeaders -InFile $_.FullName -ContentType $contentType -TimeoutSec 3600
+    Start-Sleep -s 10
 }
