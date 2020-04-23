@@ -1,9 +1,10 @@
 param (
     [string]$token = "",
     [string]$milestone = ""  
+	[string]$milestonedesc = ""  
+	
  )
- echo $token
- echo $milestone
+ 
 cd SQRLDotNetClientUI
 dotnet publish -r win-x64 -c Release /p:PublishSingleFile=false /p:PublishTrimmed=true
 dotnet publish -r linux-x64 -c Release /p:PublishSingleFile=false /p:PublishTrimmed=true
@@ -38,7 +39,7 @@ $releaseParams =
   "tag_name" = "$milestone"
   "target_commitish"= "master"
   "name"= "$milestone"
-  "body"= "Description of the release"
+  "body"= "$milestonedesc"
   "draft" = $false
   "prerelease"= $true
 }
