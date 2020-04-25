@@ -1,6 +1,6 @@
 param (
-    [string]$token = "",
-    [string]$milestone = "" , 
+	[string]$token = "",
+    	[string]$milestone = "" , 
 	[string]$milestonedesc = ""  
 	
  )
@@ -98,7 +98,7 @@ $jsonObject = ConvertFrom-Json $([String]::new($newRelease.Content))
 Get-ChildItem "C:\Temp\SQRL\Publish"| 
 #For each file in the publishing folder upload the asset
 Foreach-Object {
-    $contentType = If ($_.Extension -eq ".zip") {"application/x-zip-compressed"} else {"application/octet-stream"}
+    $contentType = If ($_.Extension -eq ".zip") {"application/application/x-gzip"} If ($_.Extension -eq ".gz") {"application/x-gzip"} else {"application/octet-stream"}
     $fileHeaders = @{
         "Accept"="application/vnd.github.v3+json"
         "Authorization"="token $token"
